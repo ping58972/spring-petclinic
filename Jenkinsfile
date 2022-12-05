@@ -23,7 +23,7 @@ pipeline {
         }
         stage('compile test package') {
             steps {
-                sh 'mvn clean compile package'
+                sh 'mvn clean package'
             }
         }
         stage('junit and artifacts') {
