@@ -21,5 +21,9 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ping58972/spring-petclinic.git']]])
             }
         }
+        stage('cat simple.txt') {
+            sh 'python3 --version'
+            sh 'cat simple.txt'
+        }
     }
 }
