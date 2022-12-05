@@ -22,8 +22,10 @@ pipeline {
             }
         }
         stage('cat simple.txt') {
-            sh 'python3 --version'
-            sh 'cat simple.txt'
+            steps {
+                sh 'python3 --version'
+                sh 'cat simple.txt'
+            }
         }
     }
 }
