@@ -21,17 +21,14 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ping58972/spring-petclinic.git']]])
             }
         }
-        stage('compile test') {
+        stage('compile test package') {
             steps {
-                sh 'mvn clean compile test'
+                sh 'mvn clean compile test package'
             }
         }
-        stage('package') {
+        stage('junit and artifacts') {
             steps {
-                sh 'mvn package'
                 junit '**/target/surefile-reports/TEST-*.xml'
-            }
-            steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
